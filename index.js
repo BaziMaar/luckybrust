@@ -38,10 +38,10 @@ db.once('open', () => {
 
 const walletRoute=require('./routes/walletRoute')
 const userRoutes = require('./routes/userRoute');
-// const luckyRoute = require('./routes/luckyRoutes');
+const luckyRoute = require('./routes/luckyRoute');
 app.use('/user', userRoutes);
 app.use('/wallet',walletRoute);
-// app.use('/lucky',luckyRoute(io));
+app.use('/lucky',luckyRoute(io));
 const EXPRESS_PORT = 3000;
 expressServer.listen(EXPRESS_PORT, () => {
 });
