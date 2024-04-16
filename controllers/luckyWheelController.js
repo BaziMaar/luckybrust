@@ -55,12 +55,12 @@ const generateAndBroadcastNumber = (io) => {
           a1+=x
           
         }
-        for(let i=0;i<Math.floor(Math.random()*4)+1;i++){
+        for(let i=0;i<Math.floor(Math.random()*4)+3;i++){
           let x=generateRandomNumber()
           arr2[i]=x
           a2+=x
         }
-        for(let i=0;i<Math.floor(Math.random()*4)+1;i++){
+        for(let i=0;i<Math.floor(Math.random()*4)+3;i++){
           let x=generateRandomNumber()
           arr3[i]=x
           a3+=x
