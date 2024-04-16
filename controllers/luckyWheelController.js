@@ -1,4 +1,4 @@
-const LuckyTransaction = require("../models/LuckyTransictionsModel.js");
+const LuckyTransaction = require("../models/luckyModel.js");
 const User = require("../models/userModel.js");  // Import the User model
 
 let firstBet = 0;
