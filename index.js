@@ -9,7 +9,7 @@ const cors=require('cors');
 const app = express();
 const expressServer = http.createServer(app);
 const io = socketIO(expressServer);
-app.use(cors());
+app.use(cors({ origin: '*' }));
 // Serve HTML file for testing
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
