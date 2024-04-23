@@ -8,7 +8,12 @@ require('dotenv').config();
 const cors=require('cors');
 const app = express();
 const expressServer = http.createServer(app);
-const io = socketIO(expressServer);
+const io = socketIO(expressServer, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
 app.use(cors({ origin: '*' }));
 // Serve HTML file for testing
 app.get('/', (req, res) => {
