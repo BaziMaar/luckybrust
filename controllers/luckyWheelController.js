@@ -9,6 +9,19 @@ let count =0;
 let am1=0
 let am2=0 
 let am3=0
+const probabilitied = [0.10, 0.45, 0.45]; 
+function generateRandomWithProbability(probabilities) {
+  const rand = Math.random();
+  let cumulativeProbability = 0;
+  
+  for (let i = 0; i < probabilities.length; i++) {
+      cumulativeProbability += probabilities[i];
+      
+      if (rand < cumulativeProbability) {
+          return i + 1; // Add 1 to make it 1-based index
+      }
+  }
+}
 const generateAndBroadcastNumber = (io) => {
   let lastNumbers=[0,0,0,0,0,0,0,0,0,0,0,0]
   let targetNumber = 0;
@@ -97,7 +110,7 @@ const generateAndBroadcastNumber = (io) => {
 
         spin=true
         if((firstBet===0&&secondBet===0&&thirdBet===0)||count===1){
-          winner=Math.floor(Math.random() * 2)+1;
+          winner=generateRandomWithProbability(probabilitied);
           count=0
         }
         else if (secondBet <= firstBet && secondBet <= thirdBet) {
