@@ -18,7 +18,7 @@ function generateRandomWithProbability(probabilities) {
       cumulativeProbability += probabilities[i];
       
       if (rand < cumulativeProbability) {
-          return i + 1;
+          return i;
       }
   }
 }
