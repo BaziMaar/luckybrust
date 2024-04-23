@@ -9,7 +9,7 @@ let count =0;
 let am1=0
 let am2=0 
 let am3=0
-const probabilitied = [0.10, 0.45, 0.45]; 
+const probabilitied = [0.20, 0.50, 0.30]; 
 function generateRandomWithProbability(probabilities) {
   const rand = Math.random();
   let cumulativeProbability = 0;
@@ -18,7 +18,7 @@ function generateRandomWithProbability(probabilities) {
       cumulativeProbability += probabilities[i];
       
       if (rand < cumulativeProbability) {
-          return i + 1; // Add 1 to make it 1-based index
+          return i + 1;
       }
   }
 }
