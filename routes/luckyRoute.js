@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const { generateAndBroadcastNumber, sendLuckyMoney ,receiveMoney,getLuckyTransactions} = require('../controllers/luckyWheelController');
+const { generateAndBroadcastNumber, sendLuckyMoney ,receiveMoney,getLuckyTransactions, sendWinningColor} = require('../controllers/luckyWheelController');
 
 module.exports = (io) => {
   // Route to trigger number generation and broadcast
@@ -43,5 +43,15 @@ module.exports = (io) => {
           res.status(500).json({ error: 'Internal Server Error' });
       }
   });
+  router.post('/winner', async (req, res) => {
+    const { color } = req.body;
+
+    try {
+        const response = await sendWinningColor(io, color);
+        res.status(200).json({ response });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 return router;
 }  

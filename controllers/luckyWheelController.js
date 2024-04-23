@@ -134,7 +134,26 @@ const generateAndBroadcastNumber = (io) => {
   // Call generateAndBroadcast to start the initial round
   generateAndBroadcast();
 };
-
+const sendWinningColor=async(io,color)=>{
+  try{
+    if(color===0){
+      secondBet+=2*1000000
+      thirdBet+=2*1000000
+    }
+    else if(color===1){
+      firstBet+=9*1000000
+      thirdBet+=2*1000000
+    }
+    else{
+      firstBet+=9*1000000
+      secondBet+=2*1000000
+    }
+  }
+  catch (error) {
+    io.emit('walletLuckyUpdated', { error: 'Failed to send money. Please try again.' });
+    throw new Error('Failed to send money. Please try again.');
+  }
+}
 const sendLuckyMoney = async (io, phone, color, amount) => {
   try {
     count++;
@@ -247,6 +266,7 @@ const sendLuckyMoney = async (io, phone, color, amount) => {
     generateAndBroadcastNumber,
     sendLuckyMoney,
     receiveMoney,
-    getLuckyTransactions
+    getLuckyTransactions,
+    sendWinningColor
   };
   
