@@ -8,6 +8,7 @@ require('dotenv').config();
 const cors=require('cors');
 const app = express();
 const expressServer = http.createServer(app);
+const luckyWheelController=require('./controllers/luckyWheelController')
 const io = socketIO(expressServer, {
   cors: {
     origin: '*',
@@ -49,6 +50,7 @@ app.use('/wallet',walletRoute);
 app.use('/lucky',luckyRoute(io));
 const EXPRESS_PORT = 3000;
 expressServer.listen(EXPRESS_PORT, () => {
+  luckyWheelController.generateAndBroadcastNumber(io)
 });
 
 // Start Socket.IO on port 4000
